@@ -221,7 +221,7 @@ def update_output_container(selected_statistics, input_year):
                 children=[html.Div(Y_chart1), html.Div(Y_chart2)],
                 style={"display": "flex"}),
             html.Div(
-                className="chert-item",
+                className="chart-item",
                 children=[html.Div(Y_chart3), html.Div(Y_chart4)],
                 style={"display": "flex"})]
 
