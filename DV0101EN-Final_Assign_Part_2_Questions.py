@@ -46,7 +46,7 @@ app.layout = html.Div([
         options=[{"label": i, "value": i} for i in year_list], 
         value="Select Year")),
     html.Div([
-    html.Div(id="output-container", className="chart-grid", style={"display": "flex"})])
+        html.Div(id="output-container", className="chart-grid", style={"display": "flex"})])
 ])
 # TASK 2.4: Creating Callbacks
 # Define the callback function to update the input container based on the selected statistics
@@ -66,7 +66,8 @@ def update_input_container(selected_statistics):
 # Define the callback function to update the input container based on the selected statistics
 @app.callback(
     Output(component_id="output-container", component_property="children"),
-    [Input(component_id="dropdown-statistics", component_property="value"),Input(component_id="select-year", component_property="value")])
+    [Input(component_id="dropdown-statistics", component_property="value"),
+    Input(component_id="select-year", component_property="value")])
 
 def update_output_container(selected_statistics, input_year):
     if selected_statistics == "Recession Period Statistics":
@@ -120,14 +121,28 @@ def update_output_container(selected_statistics, input_year):
                 title="Effect of Unemployment Rate on Sales of various Vehicle Types"))
 
         return [
-            html.Div(
-                className="chart-item",
-                children=[html.Div(children=R_chart1), html.Div(children=R_chart2)],
-                style={"display": "flex"}),
-            html.Div(
-                className="chart-item",
-                children=[html.Div(children=R_chart3), html.Div(children=R_chart4)],
-                style={"display": "flex"})]
+        html.Div(
+            className="chart-container",
+            children=[
+        html.Div(
+            className="chart-item",
+            children=html.Div(children=R_chart1),
+        ),
+        html.Div(
+            className="chart-item",
+            children=html.Div(children=R_chart2),
+        ),
+        html.Div(
+            className="chart-item",
+            children=html.Div(children=R_chart3),
+        ),
+        html.Div(
+            className="chart-item",
+            children=html.Div(children=R_chart4),
+        ),
+    ],
+    style={"display": "grid", "gridTemplateColumns": "repeat(2, 1fr)"}
+)]
 
     # TASK 2.6: Create and display graphs for Yearly Report Statistics
 
@@ -181,14 +196,28 @@ def update_output_container(selected_statistics, input_year):
         # TASK 2.6: Returning the graphs for displaying Yearly data
 
         return [
-            html.Div(
-                className="chart-item",
-                children=[html.Div(Y_chart1), html.Div(Y_chart2)],
-                style={"display": "flex"}),
-            html.Div(
-                className="chart-item",
-                children=[html.Div(Y_chart3), html.Div(Y_chart4)],
-                style={"display": "flex"})]
+        html.Div(
+            className="chart-container",
+            children=[
+        html.Div(
+            className="chart-item",
+            children=html.Div(Y_chart1),
+        ),
+        html.Div(
+            className="chart-item",
+            children=html.Div(Y_chart2),
+        ),
+        html.Div(
+            className="chart-item",
+            children=html.Div(Y_chart3),
+        ),
+        html.Div(
+            className="chart-item",
+            children=html.Div(Y_chart4),
+        ),
+    ],
+    style={"display": "grid", "gridTemplateColumns": "repeat(2, 1fr)"}
+)]
 
     else:
 
